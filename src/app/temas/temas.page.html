@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="irParaHome()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="titulo">Nosso Grupo</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="conteudo-grupo">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Nosso Grupo</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="conteudo-principal">
+    <div class="foto-grupo">
+      <img src="assets/images/foodsafety.png" alt="Foto do Grupo" />
+    </div>
+
+    <p class="descricao">
+      Somos uma equipe dedicada, unindo talentos para entregar o melhor projeto aos nossos usuários.
+    </p>
+
+    <h3>Equipe</h3>
+    <div class="lista-membros">
+      <div class="membro-card">
+        <img src="assets/images/nicollas.jpg" alt="Nicollas de Lima Florencio" class="foto-membro" />
+        <div class="info-membro">
+          <h4>Nicollas de Lima Florencio</h4>
+          <p>Estudante de Análise e Desenvolvimento de Sistemas, apaixonado por desenvolvimento web e design de interfaces intuitivas.</p>
+        </div>
+      </div>
+
+      <div class="membro-card">
+        <img src="assets/images/davi.jpg" alt="Davi Costa" class="foto-membro" />
+        <div class="info-membro">
+          <h4>Davi Costa de Oliveira</h4>
+          <p>Estudante de Análise e Desenvolvimento de Sistemas, sempre focado em criar soluções robustas e eficientes.</p>
+        </div>
+      </div>
+
+      <div class="membro-card">
+        <img src="assets/images/pedro.jpg" alt="Pedro Henrique Correa dos Santos Lemos" class="foto-membro" />
+        <div class="info-membro">
+          <h4>Pedro Henrique Correa dos Santos Lemos</h4>
+          <p>Estudante de Análise e Desenvolvimento de Sistemas, empenhado em entregar a melhor experiência visual para os usuários.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

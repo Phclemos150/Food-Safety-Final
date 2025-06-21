@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button (click)="irParaHome()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="titulo">Minha conta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Usuário</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngIf="!usuarioLogado; else perfil">
+
+
+    <div class="login-heading">Faça login na sua conta</div>
+    <div class="login-subtext">Acesse suas receitas favoritas e gerencie seu perfil.</div>
+
+    <form (ngSubmit)="login()" #usuarioForm="ngForm" class="ion-padding">
+
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="email" name="email" [(ngModel)]="email" required email>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" name="senha" [(ngModel)]="senha" required minlength="6">
+        </ion-input>
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="!usuarioForm.form.valid" class="ion-margin-top">
+        Entrar
+      </ion-button>
+
+      <ion-button expand="block" fill="outline" class="ion-margin-top" (click)="irParaRegistrar()">
+        Criar conta
+      </ion-button>
+
+    </form>
+  </div>
+
+  <ng-template #perfil>
+    <div class="perfil-container fade-in">
+      <ion-card class="perfil-card">
+        <ion-card-header>
+          <ion-card-title>Meu Perfil</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <p><strong>Email:</strong> {{ usuarioLogado.email }}</p>
+          <p><strong>Nome:</strong> {{ perfilExtra.nome || '(sem nome)' }}</p>
+          <p><strong>Sobrenome:</strong> {{ perfilExtra.sobrenome || '(sem sobrenome)' }}</p>
+          <p><strong>Telefone:</strong> {{ perfilExtra.telefone || '(sem telefone)' }}</p>
+          <p><strong>Data de nascimento:</strong> {{ perfilExtra.dataNascimento ? (perfilExtra.dataNascimento |
+            date:'dd/MM/yyyy') : '(não informada)' }}</p>
+
+          <ion-button expand="block" color="primary" (click)="editarPerfil()">
+            <ion-icon slot="start" name="create-outline"></ion-icon>
+            Editar Perfil
+          </ion-button>
+
+          <ion-button expand="block" color="danger" (click)="logout()">
+            <ion-icon slot="start" name="log-out-outline"></ion-icon>
+            Sair
+          </ion-button>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ng-template>
+
+</ion-content>
