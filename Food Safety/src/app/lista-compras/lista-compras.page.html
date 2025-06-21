@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/tabs/home']">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Lista de Compras</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input
+      [(ngModel)]="novoItem"
+      placeholder="Adicione um item à lista"
+      (keyup.enter)="adicionarItem()"
+    ></ion-input>
+    <ion-button (click)="adicionarItem()" expand="block" fill="outline">
+      Adicionar
+    </ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of lista; let i = index">
+      <ion-item (click)="alternarComprado(item)">
+        <ion-label>
+          <span
+            [ngStyle]="{ 'text-decoration': item.comprado ? 'line-through' : 'none' }"
+          >
+            {{ item.nome }}
+          </span>
+          <span *ngIf="item.comprado" style="color: gray;"> (comprado)</span>
+        </ion-label>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="removerItem(i)">
+          Remover
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+  <ion-button 
+    color="danger" 
+    expand="block" 
+    (click)="limparLista()" 
+    [disabled]="lista.length === 0"
+  >
+    Limpar Lista
+  </ion-button>
+</ion-content>
